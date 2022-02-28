@@ -10,7 +10,7 @@ namespace CSharpIntermediateFields
     {
         public int Id;
         public string Name;
-        public List<Order> Orders = new List<Order>();  //This way no matter which constructor is going to be called the Order spell will always be initialized an empty list.
+        public readonly List<Order> Orders = new List<Order>();  //This way no matter which constructor is going to be called the Order spell will always be initialized an empty list.
 
 
         public Customer(int id)
@@ -29,8 +29,24 @@ namespace CSharpIntermediateFields
         //read only file
         public void Promote()
         {
-
+            Orders = new List<Order>();
         }
+
+        /*
+         First of all we can immediately see this error here by the red underline.
+
+        It says read only field cannot be used as an assignment target.
+
+        So if you don't see the read error when you compile the application you're definitely going to see that.
+
+        So a read only field cannot be assigned to except in a constructor or a variable initializer.
+
+        So what this means is this line is not acceptable and we can only initialize a read only field either
+
+        here directly when we are declaring that or in the constructor.
+
+        So Read-Only is one of the ways that you can improve the robustness of your application.
+         */
 
 
     }
