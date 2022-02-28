@@ -15,7 +15,11 @@ namespace CSharpIntermediateFields // Note: actual namespace depends on the proj
             customer.Orders.Add(new Order());
             customer.Orders.Add(new Order());
 
-            Console.WriteLine(customer.Orders.Count);
+            customer.Promote();
+            //This method because of a bug accidentally re-initialize the orders field.
+            //So now if you run the application all the data that we had in the orders fill is lost.
+
+                        Console.WriteLine(customer.Orders.Count); //you should see 2 on the Console
         }
     }
 }
